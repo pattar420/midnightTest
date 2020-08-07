@@ -1,31 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+ 
+
+
 import Card from './Card';
+ 
 
 
 export class Slideshow extends Component {
     render() {
 
-        let cardList = [];
+        let [cardIndex, setCardIndex] = useState(0);
 
-        const renderCards = (cards) => {
-            for(let card of cards){
-                cards.append(
-                <Card 
-                pic={card.pic}
-                discription={card.discription}
-                />)
-                
+        let cards = this.props.cardList
+            .map(card => 
+                <Card
+                    pic={card.pic}
+                    discription={card.discription}
+                    />    
+                );
+
+        const handleCarouselButton = (direction) => {
+            if(direction === -1){
+                if(cardIndex <= 0 ){ 
+                    setCardIndex(cards.length)}
+                    
+                else{setCardIndex(cardIndex => cardIndex += direction)}
+                }
+            else if(direction === 1){
+                if(cardIndex >= 0){
+                    setCardIndex(cards.length)}
             }
+            else{setCardIndex(cardIndex => cardIndex += direction)}
         }
+
+
+            
 
         return (
             <div className='slideshow-container'>
-            <button className='slide-left'><i className='fa fa-arrow-left'/></button>
-            <div className='slide-cards'>{renderCards()}</div>
-            <button className='slide-right'><i className='fa fa-arrow-right'/></button>
+            <button className='slide-left slideshow-button' onClick={handleCarouselButton(-1)}><FaAngleLeft /></button>
+            <div className='slide-cards'>{cards}</div>
+            <button className='slide-right slideshow-button' onClick={handleCarouselButton(1)}><FaAngleRight /></button>
             </div>
         )
     }
 }
 
-export default Slideshow;
+export default Slideshow

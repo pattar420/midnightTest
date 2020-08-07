@@ -91,18 +91,29 @@ body {
 
 .slideshow-container {
   height: 50vh;
-  width: 100vw;
+  width: 90vw;
   display: flex;
+  margin: auto;
+}
+
+.slideshow-button {
+  width: 5vw;
+}
+
+.slide-cards {
+  display: flex;
+  width: 100%;
+  background-color: antiquewhite;
   overflow-x: auto;
   overflow-y: hidden;
-  background-color: antiquewhite;
 }
 
 .slideshow-card {
-  height: 20vh;
-  width: 32vh;
+  height: 90%;
+  width: 40%;
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  border: solid black 2px;
 }
 
 /* Page footer */
@@ -117,4 +128,8 @@ body {
   background-color: #191919;
   height: 100vh;
   width: 100vw;
+}
+
+.projectSlideshow {
+  margin: 0 5vw;
 }

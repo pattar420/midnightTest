@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { projectCards } from './data';
 import PageSection from './PageSection';
 import PageSubSection from './PageSubSection';
 import Slideshow from './Slideshow';
@@ -22,7 +23,10 @@ export class Homepage extends Component {
                 title="Projects"
                 />
                 <PageSubSection>
-                <Slideshow />
+                <Slideshow
+                cardList={projectCards}
+                extraStyles="projectSlideshow"
+                 />
                 </PageSubSection>
             </div>
         )

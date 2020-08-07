@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 export class SponsorEntry extends Component {
     render() {
         return (
             <div className='sponsorEntry'>
-                <Link to={this.props.sponsorLink}>
-                    <img src={this.props.sponsorLogo} />
+                <BrowserRouter>
+                <Link to={this.props.link}>
+                    <img src={this.props.sponsorLogo} alt={this.props.name} />
                 </Link>
+                </BrowserRouter>
             </div>
         )
     }

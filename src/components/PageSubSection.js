@@ -5,6 +5,7 @@ export class PageSection extends Component {
         return (
             <div className={`page-section ${this.props.extraStyles}`}>
                 <div className="ps-body">{this.props.body}</div>
+                {this.props.children}
             </div>
         )
     }

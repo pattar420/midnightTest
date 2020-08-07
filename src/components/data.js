@@ -35,8 +35,13 @@ export const social = [
 
 export const sponsors = [
     {"name": "filmfreeway", "link": "https://filmfreeway.com/", "logo": ''}
-]
+];
 
 export const eventCards = [
     {}
+];
+
+
+export const projectCards = [
+    {"name": "Mothers and Sons", "src": "../../public/img/midnightmothers.jpg"}
 ]
