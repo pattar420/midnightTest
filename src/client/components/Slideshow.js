@@ -1,52 +1,68 @@
 import React, { useState } from 'react'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { ChevronLeft, ChevronRight } from '@material-ui/icons'
 import Card from './Card';
- import {projectCards} from './data';
+import { projectCards } from './data'
 
  
 
 const Slideshow = (props) => {
 
+
         let [cardIndex, setCardIndex] = useState(0);
-        console.log(projectCards)
         
+      
+   
 
-        let cards = props.cardList
-            .map((card, index) => {
-                <Card
-                    pic={card.pic}
-                    description={card.description}
-                    key ={index}
-                    /> 
-            } 
-                   
-                );
-
-        const handleCarouselButton = (direction) => { 
-            if(direction === -1){
-                cardIndex = cardIndex - 1
-                 if(cardIndex <= 0 ){ 
-                    () => setCardIndex(cards.length)}
-                    
-                else{() => setCardIndex(cardIndex => cardIndex += direction)}
-                } 
-            else if(direction === 1){
-                cardIndex = cardIndex + 1
-                 if(cardIndex >= 0){
-                    () => setCardIndex(cards.length)}
+        const phoneWidth = window.matchMedia("(max-width: 500px)");
+        
+        const cardContent = () => {
+            if(phoneWidth.matches){
+                cards[cardIndex]
+            } else {
+                {cards[cardIndex]}{cards[cardIndex + 1]}
             }
-            else{() => setCardIndex(cardIndex => cardIndex += direction)}
-            console.log(direction)
+        }    
+    
+
+
+        let cards = projectCards
+            .map((card, index) => 
+                <Card
+                src={card.src}
+                name={card.name}
+                key={index}
+                />
+            );
+            
+            
+        console.log("cards", cards)
+
+        const handleCarouselButton = (direction) => {
+            if(direction === -1){
+                setCardIndex(cardIndex += direction);
+                if(cardIndex < 0 ){
+                    setCardIndex(cards.length -1)
+                }
+            }
+            else if(direction === 1){
+                setCardIndex(cardIndex += direction);
+
+                if(cardIndex > cards.length - 1){
+                    setCardIndex(0);
+                }
+            }
+            
         }
 
-
+        const test = phoneWidth.matches ? <div className='slide-cards'>{cards[cardIndex]}</div>  : <div className='slide-cards'>{cards[cardIndex]} {cards[cardIndex+1]}</div>
+        
             
 
         return (
             <div className='slideshow-container'>
-            <button className='slide-left slideshow-button' onClick={() => handleCarouselButton(-1) }><FaAngleLeft /></button>
-            <div className='slide-cards'>{cards}</div>
-            <button className='slide-right slideshow-button' onClick={() => handleCarouselButton(1)}><FaAngleRight /></button>
+            <button className='slide-left slideshow-button' onClick={() => handleCarouselButton(-1) }><ChevronLeft /></button>
+                {test}
+            <button className='slide-right slideshow-button' onClick={() => handleCarouselButton(1)}><ChevronRight /></button>
             </div>
         )
 }

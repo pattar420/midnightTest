@@ -2,6 +2,8 @@ import React from 'react'
 import PageSection from './PageSection';
 import PageSubSection from './PageSubSection';
 import Slideshow from './Slideshow';
+require.context('/public/', true, /\.(png|svg|jpg|jpeg|gif|webp)$/)
+
 
 
 const Homepage = () => {
@@ -22,7 +24,8 @@ const Homepage = () => {
                 title="Projects"
                 />
                 <PageSubSection
-                psExtra="slide-section">
+                extraStyles="slide-section"
+                psExtra="slide-extra">
                 <Slideshow
                 extraStyles="projectSlideshow"
                  />

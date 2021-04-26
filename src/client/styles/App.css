@@ -5,6 +5,7 @@
   margin: 0;
 }
 
+
 body {
   background-color: #262626;
   max-height: 100vh;
@@ -15,41 +16,56 @@ body {
   color: white;
 }
 
+
+
 /* Nav bar */
 
 .header-container {
   width: 100vw;
-  height: 25vh;
+  height: 4em;
   background-color: white;
   display: flex;
   align-content: center;
   justify-content: center;
 }
 
+
 .header-logo {
   margin-right: auto;
   background-color: white;
 }
 
+
 .header-logo img {
-  height: 25vh;
+  height: 4em;
+  margin: auto;
+}
+
+
+.logo {
+  padding: auto;
+}
+
+
+.dropdownArrow {
+  display: none;
 }
 
 
 .header-element {
   margin: auto 1.5em;
-  align-content: center;
-  justify-content: center;
 }
 
+
 .header-element a {
-  padding: 1em;
+  padding: .5em;
   height: 10vh;
   width: 12vh;
-  font-size: 2vw;
+  font-size: 2em;
   text-decoration: none;
   color: black;
 }
+
 
 .header-element a:hover {
   color: white;
@@ -60,7 +76,7 @@ body {
 /* Page sections */
 
 .page-section {
-  height: 55vh;
+  height: 15em;
   width: 100vw;
   color: white;
   display: flex;
@@ -70,26 +86,25 @@ body {
   border-bottom: solid black 3px;
 }
 
+
 .ps-title {
-  margin: auto;
-  font-size: 5vw;
+  margin: auto 1em;
+  font-size: 2em;
 }
 
+
 .companyBanner {
-  background-image: url("./../img/midnight-black.jpg");
-  font-size: 1.5vh;
+  background-image: url("/public/img/midnight-black.jpg");
+  font-size: 1.5em;
+  justify-content: center;
+  text-align: center;
 }
+
 
 .sectionSubBanner {
   background-color: #191910;
 }
 
-.test-div {
-  height: 50vh;
-  width: 50vw;
-  margin: auto;
-  background-color: tomato;
-}
 
 .ps-body {
   margin: auto;
@@ -98,40 +113,90 @@ body {
 
 /* Slideshow */
 
-.slide-section {
+.slide-extra{
   display: none;
 }
 
-.slideshow-container {
-  height: 50vh;
-  width: 90vw;
-  display: flex;
-  margin: auto;
+
+.slide-section {
+  height: 20em;
 }
+
+
+.slide-wrapper {
+  display: none;
+  background-color: red;
+}
+
+
+.slide-wrapper > * {
+  overflow: hidden;
+}
+
+
+.slideshow-container {
+  height: 20em;
+  width: 95vw;
+  display: flex;
+  margin: 0 auto;
+}
+
 
 .slideshow-button {
-  padding: .5em;
-  color: #191919;
-  background-color: gray;
-  border: none;
+  width: 5vw;
+  border-radius: 15px;
+  height: 5vh;
   margin: auto 0;
-  border-radius: 50%;
-} 
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 5em;
+}
+
 
 .slide-cards {
-  display: flex;
+  display: inline-flex;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
+
 .slideshow-card {
-  height: 90%;
-  width: 40%;
-  margin: auto;
+  height: 100%;
+  width: 47%;
+  margin: auto 4vw;
   display: flex;
   border: solid black 2px;
+  justify-content: space-between;
 }
+
+
+.projectSlideshow {
+  margin: 0 5vw;
+}
+
+
+.card-image {
+  width: 100%;
+}
+
+/* Events page */
+
+.events-wrapper {
+  height: 90%;
+}
+
+
+.event-logo-wrapper {
+  width: 100vw;
+}
+
+
+.events-logo {
+  padding: auto;
+}
+
+
 
 /* Page footer */
 
@@ -141,12 +206,96 @@ body {
   width: 100vw;
 }
 
-#componentDemo {
-  background-color: #191919;
-  height: 100vh;
-  width: 100vw;
+
+.social-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.projectSlideshow {
-  margin: 0 5vw;
+
+.social-wrapper > a {
+  margin: 1em 2em;
+  color: white;
+}
+
+
+/* cell phone styles */
+
+@media only screen and ( max-device-width: 800px) {
+
+  /* Mobile Header */
+
+  .header-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  
+  .header-logo {
+    margin: auto;
+  }
+
+  
+  .dropdownArrow {
+    display: flex;
+    color: black;
+    width: 100%;
+    justify-content: center;
+  }
+
+  
+  .dropdownArrow > * {
+    margin: auto;
+  }
+
+  
+  .header-element {
+    border-top: solid black .5px;
+    justify-content: center;
+    align-content: center;
+    display: none;
+  }
+
+
+  .header-element a {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    font-size: 1em;
+    font-weight: bold;
+    height: 1.5em;
+    width: auto;
+  }
+
+
+  .page-section {
+    height: 44vh;
+  }
+
+  
+  .ps-body {
+    font-size: 1.5em;
+  }
+
+
+  /* Mobile Slideshow */
+
+  .slideshow-container {
+    height: 44vh;
+    overflow: hidden;
+  }
+
+  
+  .slideshow-card {
+    width: 100%;
+    height: 44vh;
+    overflow: hidden;
+  }
+
+  
+  .card-image {
+    height: 44vh;
+  }
+ 
 }

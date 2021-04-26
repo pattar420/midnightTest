@@ -1,5 +1,5 @@
 {  
     "verbose": false,
-    "watch": [ "./src" ],
-    "exec": "webpack --mode development && node src/server/index.js"
+    "watch": [ "./src/" ],
+    "exec": "webpack --mode development && node src/server/express.js"
 }

@@ -1,12 +1,11 @@
 import React from 'react'
 
 const Card = (props) => {
-    const pic = props.src
+
 
     return (
-        <div className='slideshow-card'>
-            <img className={`card-image ${props.extraClasses}`} src={pic} alt={props.name}/>
-            <div className='card-description'>{props.description}</div>
+        <div className={`slideshow-card ${props.wrapperClasses}`}>
+            <img className={`card-image ${props.imageClasses}`} src={require('/public/img/' + props.src)} alt={props.name} />
         </div>
     )
 }

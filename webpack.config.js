@@ -2,22 +2,14 @@ const HtmlWebPackPlugin = require("html-webpack-plugin")
 const path = require('path')
 
 
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
-    filename: "./index.html"
-});
-
 
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: "./src/main.js",
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "[name].js"
     },
-    plugins: [
-        htmlPlugin
-    ],
     module: {
         rules: [
             {
@@ -32,8 +24,8 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|svg|jpg|gif|webp)$/,
-                loader: "file-loader"
+                test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
+                type: 'asset'
               }
         ]
     }
