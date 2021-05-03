@@ -2,7 +2,6 @@ import React from 'react'
 import PageSection from './PageSection';
 import PageSubSection from './PageSubSection';
 import Slideshow from './Slideshow';
-require.context('/public/', true, /\.(png|svg|jpg|jpeg|gif|webp)$/)
 
 
 

@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server'
 import template from '../../template.js'
 import ReactRouter from 'react-router-dom'
 import Body from '../client/components/Body'
-import StaticRouter from 'react-router-dom'
+import {StaticRouter} from 'react-router-dom'
 import compress from 'compression'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -14,7 +14,7 @@ import cookieParser from 'cookie-parser'
 
 
 const app = express()
-const port = process.env.PORT || 3000;
+const port = 3000;
 const CURRENT_WORKING_DIR = process.cwd()
 
 
@@ -42,26 +42,30 @@ app.get('*', (req, res) => {
     const body = ReactDOMServer.renderToString(
         <StaticRouter location={req.url} context={context}>
             <Body />
-        </StaticRouter>)
-
-        console.log('body: ', body)
+        </StaticRouter>
+        )
 
     if (context.url) {
         return res.redirect(303, context.url)
     }
-
-    res.status(200).send(template({body}))
+    console.log(template(body))
+    res.status(200).send(template(body))
+    console.log('test 1')
 }) 
 
 
 
 app.get('/', (req, res) => {
+    console.log('test 2')
     res.status(200).send(template())
 })
 
 
 
-app.listen(port, function(){
+app.listen(port, (err) => {
+    if (err){
+        console.log('an error occured ', err)
+    }
     console.log('App listening on port: ', port)
 })
 

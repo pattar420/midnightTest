@@ -11,9 +11,19 @@ const Header = (props) => {
         setVisibility(false)
     }, [])
 
-
+    useEffect( () =>{
+        const headerElements = document.getElementsByClassName('header-element');
+        for(let el of headerElements){
+            el.addEventListener('click', changeVisibility)
+        }
+    }, []
+    )
+    
+    
+    
+    
     let vis = menuVis ? 'none' : 'flex' 
-    let headerElements = document.getElementsByClassName('header-element');
+    
     let changeVisibility = () => {
         
         console.log('header elements: ', headerElements)
@@ -24,9 +34,7 @@ const Header = (props) => {
         } 
     }
 
-    for(let el of headerElements){
-        el.addEventListener('click', changeVisibility)
-    }
+    
         
 
     return (

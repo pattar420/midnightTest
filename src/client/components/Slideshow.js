@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from '@material-ui/icons'
 import Card from './Card';
 import { projectCards } from './data'
@@ -11,17 +11,22 @@ const Slideshow = (props) => {
         let [cardIndex, setCardIndex] = useState(0);
         
       
-   
-
-        const phoneWidth = window.matchMedia("(max-width: 500px)");
-        
-        const cardContent = () => {
-            if(phoneWidth.matches){
-                cards[cardIndex]
-            } else {
-                {cards[cardIndex]}{cards[cardIndex + 1]}
-            }
+        useEffect(() => {
+            const phoneWidth = window.matchMedia("(max-width: 500px)");
+            const cardContent = () => {
+                if(phoneWidth.matches){
+                    cards[cardIndex]
+                } else {
+                    {cards[cardIndex]}{cards[cardIndex + 1]}
+                }
         }    
+        const cards = phoneWidth.matches ? <div className='slide-cards'>{cards[cardIndex]}</div>  : <div className='slide-cards'>{cards[cardIndex]} {cards[cardIndex+1]}</div>
+        })
+
+
+        
+        
+        
     
 
 
@@ -34,9 +39,6 @@ const Slideshow = (props) => {
                 />
             );
             
-            
-        console.log("cards", cards)
-
         const handleCarouselButton = (direction) => {
             if(direction === -1){
                 setCardIndex(cardIndex += direction);
@@ -54,14 +56,14 @@ const Slideshow = (props) => {
             
         }
 
-        const test = phoneWidth.matches ? <div className='slide-cards'>{cards[cardIndex]}</div>  : <div className='slide-cards'>{cards[cardIndex]} {cards[cardIndex+1]}</div>
+        
         
             
 
         return (
             <div className='slideshow-container'>
             <button className='slide-left slideshow-button' onClick={() => handleCarouselButton(-1) }><ChevronLeft /></button>
-                {test}
+                {cards}
             <button className='slide-right slideshow-button' onClick={() => handleCarouselButton(1)}><ChevronRight /></button>
             </div>
         )

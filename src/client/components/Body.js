@@ -18,7 +18,6 @@ const Body = (props) => {
 
     return (
         <div>
-            <script src="https://kit.fontawesome.com/9925cd3b99.js" crossOrigin="anonymous"></script>
             <Header headerData={state.headerComponents} />
                 <MainRouter />
             <Footer
