@@ -1,15 +1,11 @@
 const path = require("path")
 const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const src = path.resolve(__dirname, 'src');
 const CURRENT_WORKING_DIR = process.cwd()
 
 
 const config = {
     name: 'browser',
-    entry: path.join(src + "client"),
-    plugins: [new MiniCssExtractPlugin()],
-    devtool: 'eval-source-map',
+    entry: path.join(CURRENT_WORKING_DIR, "/src/main.js"),
     
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -18,13 +14,13 @@ const config = {
     module: {
         rules: [ 
             {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader']
-            }, 
-            {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
                 type: 'asset'
-              },
+            },
+            {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+          },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,

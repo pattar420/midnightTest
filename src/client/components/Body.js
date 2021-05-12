@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { headerCards, social } from './data'
 import Header from './Header'
 import MainRouter from './mainRouter'
@@ -14,6 +14,8 @@ const Body = (props) => {
         youtube: social[2],
         rss: 'https://anchor.fm/patrick-thurston'
       })
+
+    
 
 
     return (

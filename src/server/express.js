@@ -11,6 +11,9 @@ import helmet from 'helmet'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import { ServerStyleSheets } from '@material-ui/styles'
+import './../client/styles/App.css'
+
 
 
 const app = express()
@@ -18,13 +21,16 @@ const port = 3000;
 const CURRENT_WORKING_DIR = process.cwd()
 
 
-app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
-app.use(helmet())
-app.use(cors())
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+app.use(express.static(path.join(CURRENT_WORKING_DIR, 'public')))
 app.use(cookieParser())
 app.use(compress())
+app.use(helmet())
+app.use(cors())
+
 
 const mockResponse = {
     foo: 'bar',
@@ -37,21 +43,28 @@ app.get('/api', (req, res) => {
 })
 
 app.get('*', (req, res) => {
+    const sheets = new ServerStyleSheets()
     console.log('request url: ', req.url)
     let context = {}
     const body = ReactDOMServer.renderToString(
+        sheets.collect(
         <StaticRouter location={req.url} context={context}>
             <Body />
         </StaticRouter>
         )
+    )
+
+
 
     if (context.url) {
         return res.redirect(303, context.url)
     }
-    console.log(template(body))
-    res.status(200).send(template(body))
+    const css = sheets.toString()
+    console.log('css: ', css)
+    console.log(template(body, css ))
+    res.status(200).send(template(body, css))
     console.log('test 1')
-}) 
+})
 
 
 
