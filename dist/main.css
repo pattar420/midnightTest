@@ -1,0 +1,301 @@
+/* main page */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+body {
+  background-color: #262626;
+  max-height: 100vh;
+  max-width: 100vw;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  color: white;
+}
+
+
+
+/* Nav bar */
+
+.header-container {
+  width: 100vw;
+  height: 4em;
+  background-color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+
+.header-logo {
+  margin-right: auto;
+  background-color: white;
+}
+
+
+.header-logo img {
+  height: 4em;
+  margin: auto;
+}
+
+
+.logo {
+  padding: auto;
+}
+
+
+.dropdownArrow {
+  display: none;
+}
+
+
+.header-element {
+  margin: auto 1.5em;
+}
+
+
+.header-element a {
+  padding: .5em;
+  height: 10vh;
+  width: 12vh;
+  font-size: 2em;
+  text-decoration: none;
+  color: black;
+}
+
+
+.header-element a:hover {
+  color: white;
+  background-color: black;
+}
+
+
+/* Page sections */
+
+.page-section {
+  height: 15em;
+  width: 100vw;
+  color: white;
+  display: flex;
+  background-color: #191919;
+  align-content: center;
+  justify-content: center;
+  border-bottom: solid black 3px;
+}
+
+
+.ps-title {
+  margin: auto 1em;
+  font-size: 2em;
+}
+
+
+.companyBanner {
+  background-image: url(/dist/a0ef31df4f02edaff00b.jpg);
+  font-size: 1.5em;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.sectionSubBanner {
+  background-color: #191910;
+}
+
+
+.ps-body {
+  margin: auto;
+  font-size: 5vh;
+}
+
+/* Slideshow */
+
+.slide-extra{
+  display: none;
+}
+
+
+.slide-section {
+  height: 20em;
+}
+
+
+.slide-wrapper {
+  display: none;
+  background-color: red;
+}
+
+
+.slide-wrapper > * {
+  overflow: hidden;
+}
+
+
+.slideshow-container {
+  height: 20em;
+  width: 95vw;
+  display: flex;
+  margin: 0 auto;
+}
+
+
+.slideshow-button {
+  width: 5vw;
+  border-radius: 15px;
+  height: 5vh;
+  margin: auto 0;
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: 5em;
+}
+
+
+.slide-cards {
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.slideshow-card {
+  height: 100%;
+  width: 47%;
+  margin: auto 4vw;
+  display: flex;
+  border: solid black 2px;
+  justify-content: space-between;
+}
+
+
+.projectSlideshow {
+  margin: 0 5vw;
+}
+
+
+.card-image {
+  width: 100%;
+}
+
+/* Events page */
+
+.events-wrapper {
+  height: 90%;
+}
+
+
+.event-logo-wrapper {
+  width: 100vw;
+}
+
+
+.events-logo {
+  padding: auto;
+}
+
+
+
+/* Page footer */
+
+.footer {
+  background-color: #adad85;
+  height: 55vh;
+  width: 100vw;
+}
+
+
+.social-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.social-wrapper > a {
+  margin: 1em 2em;
+  color: white;
+}
+
+
+/* cell phone styles */
+
+@media only screen and ( max-device-width: 800px) {
+
+  /* Mobile Header */
+
+  .header-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  
+  .header-logo {
+    margin: auto;
+  }
+
+  
+  .dropdownArrow {
+    display: flex;
+    color: black;
+    width: 100%;
+    justify-content: center;
+  }
+
+  
+  .dropdownArrow > * {
+    margin: auto;
+  }
+
+  
+  .header-element {
+    border-top: solid black .5px;
+    justify-content: center;
+    align-content: center;
+    display: none;
+  }
+
+
+  .header-element a {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    font-size: 1em;
+    font-weight: bold;
+    height: 1.5em;
+    width: auto;
+  }
+
+
+  .page-section {
+    height: 44vh;
+  }
+
+  
+  .ps-body {
+    font-size: 1.5em;
+  }
+
+
+  /* Mobile Slideshow */
+
+  .slideshow-container {
+    height: 44vh;
+    overflow: hidden;
+  }
+
+  
+  .slideshow-card {
+    width: 100%;
+    height: 44vh;
+    overflow: hidden;
+  }
+
+  
+  .card-image {
+    height: 44vh;
+  }
+ 
+}

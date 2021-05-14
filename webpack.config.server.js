@@ -1,12 +1,16 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const CURRENT_WORKING_DIR = process.cwd();
-const webpack = require('webpack')
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
+const stylesHandler = MiniCssExtractPlugin.loader;
 
 
 const config = {
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     entry: [ path.join(CURRENT_WORKING_DIR , '/src/server/express.js') ],
     target: "node",
     output: {
@@ -16,6 +20,16 @@ const config = {
       libraryTarget: "commonjs2"
     },
     externals: [nodeExternals()],
+    plugins: [
+    new HtmlWebpackPlugin({
+      template: "index.html",
+    }),
+
+    new MiniCssExtractPlugin(),
+
+    // Add your plugins here
+    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+  ],
     module: {
     rules: [
         {
@@ -29,11 +43,7 @@ const config = {
           },
           {
           test: /\.css$/i,
-          use: [
-            {
-              loader: 'style-loader'
-            },
-            'css-loader'
+          use: [ stylesHandler, 'css-loader'
           ]
           }
     ]

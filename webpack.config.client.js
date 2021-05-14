@@ -4,6 +4,7 @@ const CURRENT_WORKING_DIR = process.cwd()
 
 
 const config = {
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     name: 'browser',
     entry: path.join(CURRENT_WORKING_DIR, "/src/main.js"),
     
@@ -15,11 +16,13 @@ const config = {
         rules: [ 
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
-                type: 'asset'
+                type: 'asset',
+                exclude: /node_modules/
             },
             {
             test: /\.css$/i,
             use: ['style-loader', 'css-loader'],
+            exclude: /node_modules/
           },
             {
                 test: /\.(js|jsx)$/,
