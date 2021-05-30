@@ -13,7 +13,7 @@ const Events = (props) => {
 
             <div className='event-logo-wrapper'><img src={require("/public" + "/img/Midnight-West-Fest-Logo-patfix.jpg")} alt="midnight west fest logo" className="events-logo" /></div>
            { props.events ? <div className='current-events'>{eventCards}</div> 
-                        : <div className='previous-events'>{previousEvents}</div> }
+                        : <div className='previous-events'></div> }{/* need to add a section for previous events */}
             
         </div>
     )

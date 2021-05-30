@@ -24,7 +24,7 @@ const Header = (props) => {
     
     let vis = menuVis ? 'none' : 'flex' 
     
-    let changeVisibility = () => {
+    const changeVisibility = () => {
         
         console.log('header elements: ', headerElements)
         setVisibility(!menuVis)

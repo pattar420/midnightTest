@@ -108,7 +108,7 @@ body {
 
 .ps-body {
   margin: auto;
-  font-size: 5vh;
+  font-size: 2em;
 }
 
 /* Slideshow */
@@ -153,6 +153,9 @@ body {
   font-size: 5em;
 }
 
+.slideshow-button > svg {
+  color: white;
+}
 
 .slide-cards {
   display: inline-flex;
@@ -219,6 +222,10 @@ body {
   color: white;
 }
 
+.social-icon > * {
+  height: 3em;
+}
+
 
 /* cell phone styles */
 
@@ -240,7 +247,6 @@ body {
   .dropdownArrow {
     display: flex;
     color: black;
-    width: 100%;
     justify-content: center;
   }
 

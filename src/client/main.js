@@ -1,8 +1,11 @@
-import React, {useEffect} from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react'
+import { hydrate }from 'react-dom'
 import App from './App'
 
+export default () => {
+   hydrate(<App />, document.getElementById('root'))
+}
 
-ReactDOM.hydrate(<App />, document.getElementById('root'))
+
 
 

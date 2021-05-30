@@ -10,8 +10,9 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 
 const config = {
+  name: 'server',
     mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: [ path.join(CURRENT_WORKING_DIR , '/src/server/express.js') ],
+    entry: [ path.join(CURRENT_WORKING_DIR , './src/server/express.js') ],
     target: "node",
     output: {
       path: path.join(CURRENT_WORKING_DIR , '/dist/'),
@@ -43,8 +44,7 @@ const config = {
           },
           {
           test: /\.css$/i,
-          use: [ stylesHandler, 'css-loader'
-          ]
+          use: [ stylesHandler, 'css-loader']
           }
     ]
     }

@@ -25,10 +25,6 @@ const Slideshow = (props) => {
 
 
         
-        
-        
-    
-
 
         let cards = projectCards
             .map((card, index) => 
@@ -53,7 +49,7 @@ const Slideshow = (props) => {
                     setCardIndex(0);
                 }
             }
-            
+            console.log(cardIndex)
         }
 
         

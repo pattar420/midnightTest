@@ -1,16 +1,23 @@
 const path = require("path")
 const webpack = require('webpack')
 const CURRENT_WORKING_DIR = process.cwd()
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+
+const stylesHandler = MiniCssExtractPlugin.loader;
+
 
 
 const config = {
-    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
     name: 'browser',
-    entry: path.join(CURRENT_WORKING_DIR, "/src/main.js"),
+    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+    
+    entry: path.join(CURRENT_WORKING_DIR, "src/client/main.js"),
     
     output: {
-        path: path.join(__dirname, '/dist/'),
-        filename: "client.js"
+        path: path.join(__dirname, '/dist'),
+        filename: "bundle.js",
+        publicPath: '/dist/'
     },
     module: {
         rules: [ 
@@ -21,10 +28,10 @@ const config = {
             },
             {
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
+            use: [stylesHandler, 'css-loader'],
             exclude: /node_modules/
           },
-            {
+        {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: [ 

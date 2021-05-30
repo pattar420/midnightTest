@@ -3,16 +3,15 @@ import path from 'path'
 import React from "react"
 import ReactDOMServer from 'react-dom/server'
 import template from '../../template.js'
-import ReactRouter from 'react-router-dom'
-import Body from '../client/components/Body'
 import {StaticRouter} from 'react-router-dom'
 import compress from 'compression'
 import helmet from 'helmet'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
-import { ServerStyleSheets } from '@material-ui/styles'
 import './../client/styles/App.css'
+import MainRouter from '../client/components/MainRouter.js'
+
 
 
 
@@ -22,14 +21,18 @@ const CURRENT_WORKING_DIR = process.cwd()
 
 
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
-app.use(express.static(path.join(CURRENT_WORKING_DIR, 'public')))
+
 app.use(cookieParser())
 app.use(compress())
-app.use(helmet())
+app.use(helmet({
+    contentSecurityPolicy: false,
+  }))
 app.use(cors())
+app.use(express.static(path.join(CURRENT_WORKING_DIR, 'public')))
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 
 const mockResponse = {
@@ -43,29 +46,33 @@ app.get('/api', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    const sheets = new ServerStyleSheets()
     console.log('request url: ', req.url)
-    let context = {}
+    const context = {}
     const body = ReactDOMServer.renderToString(
-        sheets.collect(
         <StaticRouter location={req.url} context={context}>
-            <Body />
+            <MainRouter />
         </StaticRouter>
         )
-    )
 
 
 
     if (context.url) {
         return res.redirect(303, context.url)
     }
-    const css = sheets.toString()
-    console.log('css: ', css)
-    console.log(template(body, css ))
-    res.status(200).send(template(body, css))
+    res.status(200).send(template(body))
     console.log('test 1')
+    
 })
 
+app.use((err, req, res, next) => {
+    if (err.name === 'UnauthorizedError') {
+      res.status(401).json({"error" : err.name + ": " + err.message})
+    }else if (err) {
+      res.status(400).json({"error" : err.name + ": " + err.message})
+      console.log(err)
+    }
+  })
+  
 
 
 app.get('/', (req, res) => {
@@ -76,10 +83,10 @@ app.get('/', (req, res) => {
 
 
 app.listen(port, (err) => {
-    if (err){
-        console.log('an error occured ', err)
+    if(err) {
+        console.log(err);
     }
-    console.log('App listening on port: ', port)
+    console.info('Server started on port %s', port);
 })
 
 
