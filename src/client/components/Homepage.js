@@ -2,6 +2,7 @@ import React from 'react'
 import PageSection from './PageSection';
 import PageSubSection from './PageSubSection';
 import Slideshow from './Slideshow';
+import { projectCards } from './data'
 
 
 
@@ -26,6 +27,7 @@ const Homepage = () => {
                 extraStyles="slide-section"
                 psExtra="slide-extra">
                 <Slideshow
+                cards={projectCards}
                 extraStyles="projectSlideshow"
                  />
                 </PageSubSection>

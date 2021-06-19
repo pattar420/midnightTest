@@ -38,12 +38,8 @@ export const sponsors = [
     {"name": "filmfreeway", "link": "https://www.filmfreeway.com/", "logo": ''}
 ];
 
-export const eventCards = [
-    {}
-];
-
-
 export const projectCards = [
+    {"name": 'mwf2021', "src": "mwf2021.webp"},
     {"name": "Mothers and Sons", "src": "midnightmothers.jpg"},
     {"name": "It's a wonderful life", "src": "midnightwonder.jpg"},
     {"name": "Midnight Zombie Fest", "src": "midnightZfest.jpg"}

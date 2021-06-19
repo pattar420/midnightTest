@@ -1,9 +1,9 @@
 import express from 'express'
 import path from 'path'
+import {StaticRouter} from 'react-router-dom'
 import React from "react"
 import ReactDOMServer from 'react-dom/server'
 import template from '../../template.js'
-import {StaticRouter} from 'react-router-dom'
 import compress from 'compression'
 import helmet from 'helmet'
 import cors from 'cors'
@@ -57,9 +57,10 @@ app.get('*', (req, res) => {
 
 
     if (context.url) {
+        console.log('there was context...   redirecting')
         return res.redirect(303, context.url)
     }
-    res.status(200).send(template(body))
+    res.status(200).send(template({body: body}))
     console.log('test 1')
     
 })
@@ -89,6 +90,4 @@ app.listen(port, (err) => {
     console.info('Server started on port %s', port);
 })
 
-
-export default app
 

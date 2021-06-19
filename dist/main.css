@@ -113,6 +113,15 @@ body {
 
 /* Slideshow */
 
+.slideshow-container {
+  height: auto;
+  width: 95vw;
+  display: flex;
+  margin: 0 auto;
+  background-color: #191919;
+}
+
+
 .slide-extra{
   display: none;
 }
@@ -123,10 +132,7 @@ body {
 }
 
 
-.slide-wrapper {
-  display: none;
-  background-color: red;
-}
+
 
 
 .slide-wrapper > * {
@@ -134,12 +140,7 @@ body {
 }
 
 
-.slideshow-container {
-  height: 20em;
-  width: 95vw;
-  display: flex;
-  margin: 0 auto;
-}
+
 
 
 .slideshow-button {
@@ -150,7 +151,6 @@ body {
   color: white;
   background-color: transparent;
   border: none;
-  font-size: 5em;
 }
 
 .slideshow-button > svg {
@@ -186,7 +186,9 @@ body {
 /* Events page */
 
 .events-wrapper {
-  height: 90%;
+  height: auto;
+  background-color: #191919;
+  text-align: center;
 }
 
 
@@ -199,6 +201,46 @@ body {
   padding: auto;
 }
 
+.upcomingEvents {
+  margin: auto;
+}
+
+.previousEvents {
+  height: auto;
+  text-align: center;
+  margin: auto;
+  background-color: #adad85;
+}
+
+/* Services page */
+
+.services-content {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  justify-content: space-around;
+  text-align: center;
+  color: #d1d1d1;
+  font-size: 1.5em;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 1em;
+}
+
+.service-pricing {
+  margin-top: 1em;
+  border: double white 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+  height: 5em;
+  padding: .5em;
+}
 
 
 /* Page footer */

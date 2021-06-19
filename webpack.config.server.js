@@ -3,16 +3,15 @@ const nodeExternals = require('webpack-node-externals')
 const CURRENT_WORKING_DIR = process.cwd();
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 
 const config = {
-  name: 'server',
-    mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    entry: [ path.join(CURRENT_WORKING_DIR , './src/server/express.js') ],
+    name: "server",
+    mode: 'development',
+    entry: [path.join(CURRENT_WORKING_DIR , '/src/server/express.js')],
     target: "node",
     output: {
       path: path.join(CURRENT_WORKING_DIR , '/dist/'),
@@ -20,16 +19,9 @@ const config = {
       publicPath: '/dist/',
       libraryTarget: "commonjs2"
     },
-    externals: [nodeExternals()],
+    externals: [ nodeExternals() ],
     plugins: [
-    new HtmlWebpackPlugin({
-      template: "index.html",
-    }),
-
-    new MiniCssExtractPlugin(),
-
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new MiniCssExtractPlugin()
   ],
     module: {
     rules: [
@@ -39,12 +31,13 @@ const config = {
           use: [ 'babel-loader' ]
         },
         {
+        test: /\.css$/i,
+        use: [stylesHandler, 'css-loader'],
+        exclude: /node_modules/
+      },
+        {
           test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
           type: 'asset'
-          },
-          {
-          test: /\.css$/i,
-          use: [ stylesHandler, 'css-loader']
           }
     ]
     }

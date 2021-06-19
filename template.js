@@ -1,5 +1,5 @@
 
-export default (body, css) => {
+export default ({body}) => {
     return `<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -9,11 +9,12 @@ export default (body, css) => {
             
             <title>Midnight test</title>
             <link href="/dist/main.css" rel="stylesheet">
+            
         </head>
         <body>
             <div id='root'>${body}</div>
             <div id='toRemove'> </div>
-            <script defer src="/dist/server.generated.js"></script>
+            <script type"text/javascript" src="/dist/bundle.js"></script>
         </body>
         
         </html>`

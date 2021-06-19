@@ -1,9 +1,26 @@
 import React from 'react';
-import { eventCards } from './data';
+import { projectCards } from './data';
+import Card from './Card';
 import PageSection from './PageSection';
 import Slideshow from './Slideshow';
 
 const Events = (props) => {
+
+    
+    let eventCards = projectCards
+            .map((card, index) => 
+                <Card
+                    src={card.src}
+                    name={card.name}
+                    key={index}
+                />
+    )
+
+
+
+ 
+
+
     return (
         <div className='events-wrapper'>               
         <PageSection
@@ -11,9 +28,21 @@ const Events = (props) => {
         title='EVENTS'
          />
 
-            <div className='event-logo-wrapper'><img src={require("/public" + "/img/Midnight-West-Fest-Logo-patfix.jpg")} alt="midnight west fest logo" className="events-logo" /></div>
-           { props.events ? <div className='current-events'>{eventCards}</div> 
-                        : <div className='previous-events'></div> }{/* need to add a section for previous events */}
+           { props.events ? 
+           <div className='upcoming-events'>
+               <h1>Upcoming Events</h1>
+               <div className='verticle-card-wrapper'>
+               {eventCards}
+               </div>
+            </div> 
+
+
+           : <div className='previous-events'>
+               <h1>Previous Events</h1>
+               <div className='horizontal-card-wrapper'>
+                   <Slideshow cards={projectCards} extraStyles="projectSlideshow" />
+               </div>
+            </div> }
             
         </div>
     )

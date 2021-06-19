@@ -1,4 +1,4 @@
-const path = require("path")
+/* const path = require("path")
 const { BrowserRouter } = require("react-router-dom")
 const webpack = require('webpack')
 const CURRENT_WORKING_DIR = process.cwd()
@@ -98,4 +98,4 @@ module: {
 }
 ]
 
-module.exports = config
+module.exports = config */

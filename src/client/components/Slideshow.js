@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from '@material-ui/icons'
 import Card from './Card';
-import { projectCards } from './data'
 
  
 
@@ -9,7 +8,6 @@ const Slideshow = (props) => {
 
 
         let [cardIndex, setCardIndex] = useState(0);
-        
       
         useEffect(() => {
             const phoneWidth = window.matchMedia("(max-width: 500px)");
@@ -24,7 +22,7 @@ const Slideshow = (props) => {
         })
 
 
-        
+        let projectCards = props.cards
 
         let cards = projectCards
             .map((card, index) => 

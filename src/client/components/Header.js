@@ -7,17 +7,15 @@ import { ArrowDropDown } from '@material-ui/icons'
 const Header = (props) => {
 
     const [menuVis, setVisibility] = useState(false)
+    
     useEffect(() => {
+        console.log('test 1 in header.js passed')
         setVisibility(false)
-    }, [])
-
-    useEffect( () =>{
         const headerElements = document.getElementsByClassName('header-element');
         for(let el of headerElements){
             el.addEventListener('click', changeVisibility)
         }
-    }, []
-    )
+    }, [])
     
     
     
