@@ -4,9 +4,10 @@ import {NavLink} from 'react-router-dom';
 
 
 const HeaderElement = (props) => {
+    
     return (
             
-            <div className="header-element">
+            <div className={`header-element`} >
                <NavLink to={props.link}>{props.title}</NavLink>
             </div>
         )

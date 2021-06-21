@@ -7,7 +7,7 @@ import { ArrowDropDown } from '@material-ui/icons'
 const Header = (props) => {
 
     const [menuVis, setVisibility] = useState(false)
-    
+
     useEffect(() => {
         console.log('test 1 in header.js passed')
         setVisibility(false)
@@ -23,13 +23,11 @@ const Header = (props) => {
     let vis = menuVis ? 'none' : 'flex' 
     
     const changeVisibility = () => {
-        
-        console.log('header elements: ', headerElements)
+        const menu = document.getElementsByClassName('menu-list')[0]
+        console.log('menu is: ', menu)
         setVisibility(!menuVis)
         console.log('vis: ', vis)
-        for(let e of headerElements){
-            e.style.display = vis;
-        } 
+        menu.style.display = vis;
     }
 
     
@@ -41,13 +39,16 @@ const Header = (props) => {
                 <img src={mwLogo} alt="midnight west logo" className='logo'></img>
             </a>
             <div className='dropdownArrow' onClick={changeVisibility}><ArrowDropDown /></div>
-            {props.headerData.map( (element, index) => 
+            <div className='menu-list'>
+                {props.headerData.map( (element, index) => 
                 <HeaderElement
                 title={element.body}
                 link={element.link}
                 key={index}
                  />
-            )}
+                )}
+            </div>
+            
         </div>
     )
 }

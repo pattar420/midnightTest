@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import MainRouter from './components/MainRouter';
+import { hot } from 'react-hot-loader'
 
 
 const App = () => {
@@ -8,10 +9,9 @@ const App = () => {
   React.useEffect(() => {
     try{
       const toRem = document.querySelector('#toRemove')
-      console.log('toRem: ', toRem)
       if (toRem){
-        console.log('toRem found')
-        toRem.parentNode.toRemoveChild(toRem)
+        console.log('toRem found', toRem)
+        toRem.parentNode.removeChild(toRem)
       }
     } catch (err) {
       if (err){
@@ -33,4 +33,4 @@ const App = () => {
  }
  
 
-export default App;
+export default hot(module)(App);

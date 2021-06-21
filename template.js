@@ -14,7 +14,7 @@ export default ({body}) => {
         <body>
             <div id='root'>${body}</div>
             <div id='toRemove'> </div>
-            <script type"text/javascript" src="/dist/bundle.js"></script>
+            <script defer type"text/javascript" src="/dist/bundle.js"></script>
         </body>
         
         </html>`
