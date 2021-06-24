@@ -119,7 +119,7 @@ body {
 /* Slideshow */
 
 .slideshow-container {
-  height: auto;
+  height: 30em;
   width: 95vw;
   display: flex;
   margin: 0 auto;
@@ -179,7 +179,7 @@ body {
 }
 
 
-.projectSlideshow {
+.project-slideshow {
   margin: 0 5vw;
 }
 
@@ -206,15 +206,32 @@ body {
   padding: auto;
 }
 
-.upcomingEvents {
+.upcoming-events {
+  margin: 5vh auto
+}
+
+.current-event {
   margin: auto;
 }
 
-.previousEvents {
+.previous-events {
   height: auto;
   text-align: center;
-  margin: auto;
-  background-color: #adad85;
+  margin: 10vh auto;
+}
+
+.vertical-card-wrapper {
+  margin: 5vh auto;
+}
+
+.horizontal-card-wrapper {
+  margin-top: 5vh;
+}
+
+.event-description {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 2em;
 }
 
 /* Services page */
