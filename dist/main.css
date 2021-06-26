@@ -22,7 +22,7 @@ body {
 
 .header-container {
   width: 100vw;
-  height: 4em;
+  height: 10em;
   background-color: white;
   display: flex;
   align-content: center;
@@ -38,11 +38,12 @@ body {
 .header-logo {
   margin-right: auto;
   background-color: white;
+  height: 10em;
 }
 
 
 .header-logo img {
-  height: 4em;
+  height: 10em;
   margin: auto;
 }
 
@@ -263,6 +264,52 @@ body {
   padding: .5em;
 }
 
+/* Sponsors page */
+
+.sponsor-showcase {
+  display: flex;
+  justify-content: space-around;
+  margin: 5em auto;
+}
+
+.sponsor-entry {
+  margin: auto;
+  max-height: 25em;
+  max-width: 25em;
+  border: none;
+  background-color: #1b1b1b;
+}
+
+
+
+/* Contact page */
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.contact-banner {
+  font-size: 3em;
+  margin-top: 3em;
+}
+
+.contact-form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+  text-align: center;
+  padding-bottom: 3em;
+}
+
+.form-label {
+  margin: 1.5em;
+}
+
+#message-text {
+  height: 15em;
+}
 
 /* Page footer */
 
@@ -277,6 +324,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  float: bottom;
 }
 
 

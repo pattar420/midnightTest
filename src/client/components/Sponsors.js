@@ -1,24 +1,19 @@
 import React from 'react'
 import PageSection from './PageSection';
 import {sponsors} from './data';
-import SponsorEntry from './SponsorEntry';
 
 const Sponsors = (props) => {
-    
- let sponsorList = [];
 
-        const populateSponsors = () => {
-            for(let s of sponsors) {
-                let newSponsor = <SponsorEntry 
-                                    name = {s.name}
-                                    link = {s.link}
-                                    logo = {s.logo}
-                                    /> ;
-                sponsorList.push(newSponsor);
-            }
-        }
 
-        populateSponsors();
+        
+            let sponsorList = sponsors.map((sponsor, key) =>
+                <a className='sponsor-entry' href={sponsor.link}>
+                    <img src={require('/public/img/' + sponsor.logo)} alt={sponsor.name} />
+            </a>
+            )
+
+            console.log('sponsor list: ', sponsorList)
+            
 
         return (
             <div>
@@ -26,6 +21,9 @@ const Sponsors = (props) => {
             extraStyles='page-banner'
             title='Sponsors'
              />
+            <div className='sponsor-showcase'>
+                {sponsorList}
+            </div>
             
             </div>
         )

@@ -9,7 +9,6 @@ const Header = (props) => {
     const [menuVis, setVisibility] = useState(false)
 
     useEffect(() => {
-        console.log('test 1 in header.js passed')
         setVisibility(false)
         const headerElements = document.getElementsByClassName('header-element');
         for(let el of headerElements){
@@ -24,9 +23,6 @@ const Header = (props) => {
     
     const changeVisibility = () => {
         const menu = document.getElementsByClassName('menu-list')[0]
-        console.log('menu is: ', menu)
-        setVisibility(!menuVis)
-        console.log('vis: ', vis)
         menu.style.display = vis;
     }
 

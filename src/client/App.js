@@ -10,7 +10,6 @@ const App = () => {
     try{
       const toRem = document.querySelector('#toRemove')
       if (toRem){
-        console.log('toRem found', toRem)
         toRem.parentNode.removeChild(toRem)
       }
     } catch (err) {
@@ -19,7 +18,6 @@ const App = () => {
       }
     }
     
-    console.log('child Removed')
   }, 
   [])
 

@@ -35,7 +35,7 @@ export const social = [
 ];
 
 export const sponsors = [
-    {"name": "filmfreeway", "link": "https://www.filmfreeway.com/", "logo": ''}
+    {"name": "filmfreeway", "link": "https://filmfreeway.com/MidnightWestFest", "logo": 'filmfreeway-logo.webp'}
 ];
 
 export const projectCards = [
