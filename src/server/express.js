@@ -26,10 +26,7 @@ const port = 3000;
 const CURRENT_WORKING_DIR = process.cwd()
 
 
-app.use(require("webpack-dev-middleware")(compiler, {
-     publicPath: webpackConfig.output.publicPath
-}));
-app.use(WebpackHotMiddleware(compiler));
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -99,3 +96,7 @@ app.listen(port, (err) => {
 })
 
 
+app.use(require("webpack-dev-middleware")(compiler, {
+     publicPath: webpackConfig.output.publicPath
+}));
+app.use(WebpackHotMiddleware(compiler));

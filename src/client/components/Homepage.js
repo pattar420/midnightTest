@@ -23,12 +23,8 @@ const Homepage = (props) => {
                 {
                 eventCards ? eventCards.map((card, key) =>
                 <>
-                    <Card
-                        src={card.src}
-                        name={card.name}
-                        wrapperClasses={'current-event'}
-                        key={key}
-                    />
+                    <img className='featured-image-homepage current-event' src={require('/public/img/' + eventCards[0].src)} />
+                    
                     <a className='film-freeway-button' href={sponsors[0].link}>
                         <img className='film-freeway-image' src={require('/public/img/' + sponsors[0].logo)} alt={sponsors[0].name} />
                     </a>
