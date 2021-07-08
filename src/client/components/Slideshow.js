@@ -8,7 +8,6 @@ const Slideshow = (props) => {
 
         let [cardIndex, setCardIndex] = useState(0);
         let [show, setShow] = useState(false);
-
         
         let cards = props.cards
             .map((card, index) => 

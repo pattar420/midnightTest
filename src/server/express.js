@@ -10,18 +10,26 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import './../client/styles/App.css'
+import webpack from 'webpack'
 import MainRouter from '../client/components/MainRouter.js'
+import webpackConfig from './../../webpack.config.client'
+import WebpackDevMiddleware from 'webpack-dev-middleware'
+import WebpackHotMiddleware from 'webpack-hot-middleware'
 
 
 
+
+const compiler = webpack( webpackConfig )
 
 const app = express()
 const port = 3000;
 const CURRENT_WORKING_DIR = process.cwd()
 
 
-
-
+app.use(require("webpack-dev-middleware")(compiler, {
+     publicPath: webpackConfig.output.publicPath
+}));
+app.use(WebpackHotMiddleware(compiler));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 

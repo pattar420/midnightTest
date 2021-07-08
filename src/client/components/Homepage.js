@@ -2,11 +2,15 @@ import React from 'react'
 import PageSection from './PageSection';
 import PageSubSection from './PageSubSection';
 import Slideshow from './Slideshow';
-import { projectCards } from './data'
+import Card from './Card';
+import { projectCards, eventCards } from './data'
+import {sponsors} from './data';
 
 
 
-const Homepage = () => {
+const Homepage = (props) => {
+
+
         return (
             <div>
                 <PageSection 
@@ -16,10 +20,24 @@ const Homepage = () => {
                 <PageSection 
                 title="EVENTS"
                 />
-                <PageSubSection 
-                body="More events in the works"
-                extraStyles="sectionSubBanner"
-                />
+                {
+                eventCards ? eventCards.map((card, key) =>
+                <>
+                    <Card
+                        src={card.src}
+                        name={card.name}
+                        wrapperClasses={'current-event'}
+                        key={key}
+                    />
+                    <a className='film-freeway-button' href={sponsors[0].link}>
+                        <img className='film-freeway-image' src={require('/public/img/' + sponsors[0].logo)} alt={sponsors[0].name} />
+                    </a>
+                    </>
+                    ) : <PageSubSection 
+                    body="More events in the works"
+                    extraStyles="sectionSubBanner"
+                    />
+                }
                 <PageSection 
                 title="Projects"
                 />

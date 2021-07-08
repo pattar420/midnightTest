@@ -3,6 +3,8 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #e8e8e8;
 }
 
 
@@ -78,18 +80,30 @@ body {
   background-color: black;
 }
 
+/* Home Page */
+
+.film-freeway-button {
+  margin: 3em auto;
+  display: flex;
+}
+
+.film-freeway-image {
+  margin: auto;
+}
+
 
 /* Page sections */
 
 .page-section {
-  height: 15em;
+  height: auto;
+  min-height: 15em;
   width: 100vw;
   color: white;
   display: flex;
   background-color: #191919;
   align-content: center;
   justify-content: center;
-  border-bottom: solid black 3px;
+  border-bottom: solid black 1px;
 }
 
 
@@ -128,26 +142,18 @@ body {
 }
 
 
-.slide-extra{
+.slide-extra {
   display: none;
 }
 
 
 .slide-section {
-  height: 20em;
+  min-height: 20em;
 }
-
-
-
-
 
 .slide-wrapper > * {
   overflow: hidden;
 }
-
-
-
-
 
 .slideshow-button {
   width: 5vw;
@@ -186,7 +192,12 @@ body {
 
 
 .card-image {
-  width: 100%;
+  height: auto;
+}
+
+.card-description {
+  margin: 3em auto;
+  font-size: 1.3em;
 }
 
 /* Events page */
@@ -212,7 +223,10 @@ body {
 }
 
 .current-event {
+  display: flex;
+  flex-direction: column;
   margin: auto;
+  border: none;
 }
 
 .previous-events {
@@ -287,6 +301,7 @@ body {
 .content-wrapper {
   display: flex;
   flex: 1;
+
 }
 
 .contact-banner {
@@ -295,21 +310,46 @@ body {
 }
 
 .contact-form {
+  background-image: url(/dist/fc1ae6141ad6319a0319.png);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: auto;
+  opacity: 1;
   margin: auto;
   display: flex;
   flex-direction: column;
-  width: 25em;
   text-align: center;
   padding-bottom: 3em;
+  background-color: #eaeaea;
+  color: black;
+  
+}
+
+.contact-form > * {
+  margin: auto;
 }
 
 .form-label {
   margin: 1.5em;
 }
 
-#message-text {
-  height: 15em;
+.name-input-group {
+  display: flex;
+  justify-content: space-between;
 }
+
+.another-name-class {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin: 1em;
+}
+
+#message-text {
+  margin-bottom: 3em;
+}
+
+
 
 /* Page footer */
 
@@ -404,20 +444,36 @@ body {
   /* Mobile Slideshow */
 
   .slideshow-container {
-    height: 44vh;
+    min-height: 44vh;
     overflow: hidden;
   }
 
   
   .slideshow-card {
     width: 100%;
-    height: 44vh;
+    min-height: 44vh;
     overflow: hidden;
   }
 
   
   .card-image {
-    height: 44vh;
+    min-height: 44vh;
   }
- 
+
+  /* Contact Form */
+
+  .contact-form {
+    max-width: 100vw;
+  }
+
+  .another-name-class {
+    margin: 1em;
+  }
+
+}
+
+@media only screen and ( min-device-width: 800px) {
+  .menu-list {
+    display: flex;
+  };
 }

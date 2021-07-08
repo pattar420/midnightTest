@@ -10,20 +10,29 @@ const Header = (props) => {
 
     useEffect(() => {
         setVisibility(false)
-        const headerElements = document.getElementsByClassName('header-element');
-        for(let el of headerElements){
-            el.addEventListener('click', changeVisibility)
+        if(window.matchMedia("(max-width: 500px)").matches) {
+            console.log('we are on mobile')
+            const headerElements = document.getElementsByClassName('header-element');
+            for(let el of headerElements){
+                el.addEventListener('click', changeVisibility)
+            }
+        } else {
+            console.log('we are on a non-mobile device')
         }
+        
+        
     }, [])
     
     
     
     
-    let vis = menuVis ? 'none' : 'flex' 
+    let vis = true
     
     const changeVisibility = () => {
         const menu = document.getElementsByClassName('menu-list')[0]
-        menu.style.display = vis;
+        menu.style.display = vis ? 'flex' : 'none';
+        vis = !vis
+        console.log('vis: ', vis)
     }
 
     

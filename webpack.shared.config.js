@@ -1,18 +1,58 @@
-module.exports = {
-    mode: process.env.NODE_ENV === 'production'
-    ? 'production'
-    : 'development',
+const path = require("path")
+const webpack = require('webpack')
+const CURRENT_WORKING_DIR = process.cwd()
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const nodeExternals = require('webpack-node-externals')
 
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/i,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-            },
-        ],
+const stylesHandler = MiniCssExtractPlugin.loader;
+
+
+
+
+const config = [{
+    name: 'browser',
+    devtool: 'eval-source-map',
+    mode: 'development',
+    entry: [
+      'webpack-hot-middleware/client?reload=true',
+      path.join(CURRENT_WORKING_DIR, "src/client/main.js")],
+    output: {
+        path: path.join(CURRENT_WORKING_DIR, '/dist'),
+        filename: "bundle.js",
+        publicPath: '/dist/'
     },
-    resolve: {
-        extensions: ['.js', '.css']
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new MiniCssExtractPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new ReactRefreshWebpackPlugin()
+    ],
+    module: {
+        rules: [ 
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
+                type: 'asset',
+                exclude: /node_modules/
+            },
+            {
+            test: /\.css$/i,
+            use: [stylesHandler, 'css-loader'],
+            exclude: /node_modules/
+          },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+                options: {
+                  plugins: [
+                      require("react-refresh/babel")
+                  // this line removes falsy values from the array
+                  ]
+                      }
+                }
+              ]
     }
-}
+}]
+
+export default config
