@@ -43,7 +43,11 @@ const config = {
         },
         {
         test: /\.css$/i,
-        use: [stylesHandler, 'css-loader'],
+        use: [
+          'css-hot-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
         exclude: /node_modules/
       },
         {

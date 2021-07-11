@@ -6,13 +6,9 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 
 
-const stylesHandler = MiniCssExtractPlugin.loader;
-
-
 
 const config = {
     name: 'browser',
-    devtool: 'eval-source-map',
     mode: 'development',
     entry: [
       'webpack-hot-middleware/client?reload=true',
@@ -36,8 +32,12 @@ const config = {
                 exclude: /node_modules/
             },
             {
-            test: /\.css$/i,
-            use: [stylesHandler, 'css-loader'],
+              test: /\.css/,
+              use: [
+                'css-hot-loader',
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+              ],
             exclude: /node_modules/
           },
             {

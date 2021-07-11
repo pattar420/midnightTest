@@ -8,7 +8,7 @@ const Sponsors = (props) => {
         
             let sponsorList = sponsors.map((sponsor, key) =>
                 <a className='sponsor-entry' href={sponsor.link}>
-                    <img src={require('/public/img/' + sponsor.logo)} alt={sponsor.name} />
+                    <img src={require('./../../assets/' + sponsor.logo)} alt={sponsor.name} />
             </a>
             )
 

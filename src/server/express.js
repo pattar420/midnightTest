@@ -13,7 +13,6 @@ import './../client/styles/App.css'
 import webpack from 'webpack'
 import MainRouter from '../client/components/MainRouter.js'
 import webpackConfig from './../../webpack.config.client'
-import WebpackDevMiddleware from 'webpack-dev-middleware'
 import WebpackHotMiddleware from 'webpack-hot-middleware'
 
 
@@ -26,7 +25,10 @@ const port = 3000;
 const CURRENT_WORKING_DIR = process.cwd()
 
 
-
+app.use(require("webpack-dev-middleware")(compiler, {
+     publicPath: webpackConfig.output.publicPath
+}));
+app.use(WebpackHotMiddleware(compiler));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -66,8 +68,6 @@ app.get('*', (req, res) => {
         return res.redirect(303, context.url)
     }
     res.status(200).send(template({body: body}))
-    console.log('test 1')
-    
 })
 
 app.use((err, req, res, next) => {
@@ -96,7 +96,3 @@ app.listen(port, (err) => {
 })
 
 
-app.use(require("webpack-dev-middleware")(compiler, {
-     publicPath: webpackConfig.output.publicPath
-}));
-app.use(WebpackHotMiddleware(compiler));

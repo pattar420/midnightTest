@@ -81,6 +81,9 @@ body {
 
 /* Home Page */
 
+.current-event {
+}
+
 .film-freeway-button {
   margin: 3em auto;
   display: flex;
@@ -113,7 +116,6 @@ body {
 
 
 .companyBanner {
-  background-image: url(/dist/a0ef31df4f02edaff00b.jpg);
   font-size: 1.5em;
   justify-content: center;
   text-align: center;
@@ -191,7 +193,7 @@ body {
 
 
 .card-image {
-  height: auto;
+  max-height: 100%;
 }
 
 .card-description {

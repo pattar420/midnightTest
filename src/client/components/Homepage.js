@@ -13,7 +13,7 @@ const Homepage = (props) => {
 
         return (
             <div>
-                <PageSection 
+                 <PageSection 
                 title="MIDNIGHT WEST PRODUCTIONS"
                 extraStyles="companyBanner"
                 />
@@ -23,10 +23,10 @@ const Homepage = (props) => {
                 {
                 eventCards ? eventCards.map((card, key) =>
                 <>
-                    <img className='featured-image-homepage current-event' src={require('/public/img/' + eventCards[0].src)} />
+                    <img className='featured-image-homepage current-event' src={require('./../../assets/' + eventCards[0].src)} />
                     
                     <a className='film-freeway-button' href={sponsors[0].link}>
-                        <img className='film-freeway-image' src={require('/public/img/' + sponsors[0].logo)} alt={sponsors[0].name} />
+                        <img className='film-freeway-image' src={require('./../../assets/' + sponsors[0].logo)} alt={sponsors[0].name} />
                     </a>
                     </>
                     ) : <PageSubSection 
